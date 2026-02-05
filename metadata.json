@@ -1,0 +1,8 @@
+{
+  "name": "San AI",
+  "description": "Premium AI assistant for coding, code review, and vision tasks with a robust neural interface.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

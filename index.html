@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>San AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #0b0b0d;
+        --surface: #1a1a1c;
+        --border: rgba(255, 255, 255, 0.08);
+        --accent: #3b82f6;
+        --code-header: #242426;
+        --code-bg: #141414;
+      }
+      
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg);
+        color: #e4e4e7;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .message-container {
+        max-width: 768px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .ai-message-wrapper {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        width: 100%;
+      }
+
+      .ai-avatar {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: #3b82f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 12px;
+        color: white;
+      }
+
+      .user-message {
+        background: #27272a;
+        padding: 0.65rem 1rem;
+        border-radius: 1.25rem;
+        max-width: 85%;
+        font-size: 14px;
+        border: 1px solid var(--border);
+      }
+
+      .chat-image-square {
+        width: 240px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        margin: 6px 0;
+      }
+
+      .code-box {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin: 0.75rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .code-header {
+        background: var(--code-header);
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .code-content {
+        flex: 1;
+        max-height: 350px;
+        overflow: auto;
+        padding: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        line-height: 1.5;
+        background: #000;
+      }
+
+      .copy-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 9px;
+        font-weight: 700;
+        color: #71717a;
+        transition: color 0.2s;
+      }
+      .copy-btn:hover { color: #fff; }
+
+      .scrollbar-premium::-webkit-scrollbar { width: 5px; height: 5px; }
+      .scrollbar-premium::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+      .typing-dots { display: flex; gap: 3px; padding: 10px 0; }
+      .dot {
+        width: 4px; height: 4px; background: #3b82f6; border-radius: 50%;
+        animation: dot-pulse 1.4s infinite ease-in-out;
+      }
+      .dot:nth-child(2) { animation-delay: 0.2s; }
+      .dot:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes dot-pulse {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+        40% { transform: scale(1.1); opacity: 1; }
+      }
+
+      .voice-wave { display: flex; align-items: center; gap: 2px; height: 12px; }
+      .bar {
+        width: 2px; height: 100%; background: white; border-radius: 1px;
+        animation: wave-play 0.5s infinite ease-in-out alternate;
+      }
+      @keyframes wave-play { from { height: 20%; } to { height: 100%; } }
+
+      .input-blur { background: linear-gradient(to top, var(--bg) 80%, transparent); }
+      .input-bar {
+        background: #18181b;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
